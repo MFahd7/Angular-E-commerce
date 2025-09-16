@@ -1,0 +1,52 @@
+<div class="container mx-auto px-4 py-4">
+  <h2 class="text-3xl font-semibold mb-5 text-gray-700">All Brands</h2>
+  <div class="row">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+      @for (brand of brands; track $index) {
+        <div
+          (click)="openModal(brand)"
+          class="flex flex-col p-4 border border-gray-100 rounded-lg cursor-pointer shadow hover:shadow-md transition "
+        >
+          <img [src]="brand.image" class="w-35 h-28 object-cover mb-3 mx-auto" [alt]="brand.name" />
+          <h3 class="text-left text-md font-medium text-main">{{ brand.name }}</h3>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+@if (isModalOpen) {
+  <div (click)="closeModal()" class="fixed inset-0 bg-black/50 flex justify-center items-center z-4">
+    <div (click)="$event.stopPropagation()" class="bg-white rounded-lg shadow-lg max-w-lg w-full p-6 relative">
+      
+      <button
+        (click)="closeModal()"
+        class="absolute cursor-pointer p-2 right-2 text-gray-400 hover:text-gray-600"
+      >
+        ✕
+      </button>
+
+      @if (selectedBrand) {
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-green-600 mb-4">
+            {{ selectedBrand.name }}
+          </h2>
+          <img
+            [src]="selectedBrand.image"
+            [alt]="selectedBrand.name"
+            class="mx-auto w-40 h-40 object-contain"
+          />
+        </div>
+      }
+
+      <div class="mt-6 flex justify-center">
+        <button
+          (click)="closeModal()"
+          class="bg-main cursor-pointer text-white px-6 py-2 rounded-md hover:bg-green-700 transition"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+}

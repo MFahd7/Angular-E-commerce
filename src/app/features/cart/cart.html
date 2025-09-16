@@ -1,0 +1,182 @@
+<div class="my-4">
+  @if (isLoading) {
+    <div class="flex justify-center">
+      <app-cart-loader></app-cart-loader>
+    </div>
+  } @else {
+    <div class="bg-gray-100 p-4 rounded h-screen overflow-y-auto">
+      <h1 class="font-semibold text-3xl">Shop Cart</h1>
+      <span class="text-main mt-2 mb-4 text-xl block"
+        >Total cart price: {{ cartData?.data?.totalCartPrice }}</span
+      >
+
+      @for (item of cartData?.data?.products; track $index; let i = $index) {
+        <div
+          class="flex flex-col sm:flex-row w-full bg-white p-4 rounded-xl shadow mb-3 gap-3 sm:gap-0"
+        >
+          <!-- Product Image -->
+          <div
+            [routerLink]="['/product-details', item.product._id]"
+            class="cursor-pointer w-full sm:w-1/6 flex-shrink-0"
+          >
+            <img
+              [src]="item.product.imageCover"
+              [alt]="item.product.title"
+              class="w-full h-auto rounded object-cover"
+            />
+          </div>
+
+          <!-- Product Details + Actions -->
+          <div class="flex-1 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+            <!-- Title, Price, Remove -->
+            <div class="space-y-1 w-full">
+              <p
+                class="cursor-pointer font-medium text-base"
+                [routerLink]="['/product-details', item.product._id]"
+              >
+                {{ item.product.title }}
+              </p>
+              <span
+                [routerLink]="['/product-details', item.product._id]"
+                class="cursor-pointer text-main block"
+              >
+                Price: {{ item.price }}
+              </span>
+
+              <button
+                (click)="deleteProduct(item.product._id)"
+                class="mt-2 flex gap-2 items-center px-2 py-1 rounded bg-red-500 text-white text-sm hover:bg-red-600 transition cursor-pointer"
+              >
+                <i class="fa-solid fa-trash"></i>
+                <span>Remove</span>
+              </button>
+            </div>
+
+            <!-- Quantity Controls -->
+            <div class="flex items-center gap-2 mt-3 sm:mt-0">
+              <button
+                [disabled]="updateLoading"
+                (click)="updateProductCount(item.count + 1, item.product._id, i)"
+                class="size-8 rounded-full border-2 border-main flex justify-center items-center cursor-pointer"
+              >
+                @if (updateLoading && currentIndex == i) {
+                  <i class="fa fa-spinner fa-spin text-[10px]"></i>
+                } @else {
+                  <i class="fa-solid fa-plus text-[12px]"></i>
+                }
+              </button>
+
+              <span class="min-w-[20px] text-center">{{ item.count }}</span>
+
+              <button
+                [disabled]="updateLoading"
+                (click)="updateProductCount(item.count - 1, item.product._id, i)"
+                class="size-8 rounded-full border-2 border-main flex justify-center items-center cursor-pointer"
+              >
+                @if (updateLoading && currentIndex == i) {
+                  <i class="fa fa-spinner fa-spin text-[10px]"></i>
+                } @else {
+                  <i class="fa-solid fa-minus text-[12px]"></i>
+                }
+              </button>
+            </div>
+          </div>
+        </div>
+
+      } @empty {
+        <div class="text-center py-4">
+          <p class="text-gray-500">Your cart is empty</p>
+        </div>
+      }
+
+      @if (cartData?.numOfCartItems) {
+        <div class="flex justify-between">
+          <button
+            (click)="clearCart()"
+            class="bg-red-500 rounded text-white px-4 py-2 cursor-pointer active:scale-[.95]"
+          >
+            Clear cart
+          </button>
+          <button
+            (click)="isFormOpen = true"
+            class="bg-main rounded text-white px-4 py-2 cursor-pointer active:scale-[.95]"
+          >
+            Checkout
+          </button>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<!-- address form -->
+<div
+  (click)="closeForm()"
+  [class.!flex]="isFormOpen"
+  class="hidden fixed inset-0 bg-black/70 justify-center items-center"
+>
+  <form
+    (click)="$event.stopPropagation()"
+    (ngSubmit)="checkoutCart()"
+    [formGroup]="addressForm"
+    class="max-w-3/4 w-96 bg-white p-4 rounded"
+  >
+    <h2 class="text-2xl mb-3">Address Form</h2>
+
+    <div class="relative z-0 w-full mb-5 group">
+      <input
+        formControlName="details"
+        type="text"
+        name="floating_text"
+        id="floating_text"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer"
+        placeholder=" "
+        required
+      />
+      <label
+        for="floating_text"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Details</label
+      >
+    </div>
+
+    <div class="relative z-0 w-full mb-5 group">
+      <input
+        formControlName="phone"
+        type="tel"
+        name="floating_phone"
+        id="floating_phone"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer"
+        placeholder=" "
+      />
+      <label
+        for="floating_phone"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Phone</label
+      >
+    </div>
+
+    <div class="relative z-0 w-full mb-5 group">
+      <input
+        formControlName="city"
+        type="city"
+        name="floating_city"
+        id="floating_city"
+        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-main focus:outline-none focus:ring-0 focus:border-main peer"
+        placeholder=" "
+      />
+      <label
+        for="floating_text"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >City</label
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="text-white bg-main hover:bg-main focus:ring-4 focus:outline-none focus:ring-main font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-main dark:hover:bg-main dark:focus:ring-main"
+    >
+      Submit
+    </button>
+  </form>
+</div>

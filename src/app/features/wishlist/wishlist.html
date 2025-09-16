@@ -1,0 +1,58 @@
+<div class="bg-gray-100 p-4 rounded">
+  <h1 class="text-2xl font-semibold mb-4">Wishlist ❤️</h1>
+
+  <div class="flex flex-col gap-3 h-screen overflow-y-auto">
+    @if (isLoading) {
+      <div class="flex justify-center">
+        <app-cart-loader></app-cart-loader>
+      </div>
+    } @else {
+      @for (item of wishlist; track item._id) {
+        <div
+          class="flex flex-col sm:flex-row w-full items-start sm:items-center bg-white p-4 rounded-xl shadow gap-3"
+        >
+          <!-- Product Image -->
+          <div (click)="goToDetails(item._id)" class="cursor-pointer w-full sm:w-28 flex-shrink-0">
+            <img
+              [src]="item.imageCover"
+              [alt]="item.title"
+              class="w-full h-auto rounded object-cover"
+            />
+          </div>
+
+          <!-- Middle content -->
+          <div class="flex-1">
+            <p (click)="goToDetails(item._id)" class="cursor-pointer text-base font-medium">
+              {{ item.title }}
+            </p>
+            <span (click)="goToDetails(item._id)" class="cursor-pointer text-main font-semibold">
+              {{ item.price }} EGP
+            </span>
+
+            <button
+              (click)="removeWishlistItem(item._id)"
+              class="mt-2 flex gap-1 items-center text-red-600 hover:text-red-800 text-sm"
+            >
+              <i class="fa-solid fa-trash"></i>
+              <span>Remove</span>
+            </button>
+          </div>
+
+          <!-- Add button -->
+          <div class="sm:ml-3 w-full sm:w-auto">
+            <button
+              (click)="addProductCart(item._id)"
+              class="w-full sm:w-auto px-3 py-1.5 font-semibold text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm transition"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      } @empty {
+        <div class="text-center py-4 col-span-3">
+          <p class="text-gray-600">Your wishlist is empty.</p>
+        </div>
+      }
+    }
+  </div>
+</div>

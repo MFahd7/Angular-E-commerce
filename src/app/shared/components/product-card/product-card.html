@@ -1,0 +1,35 @@
+<!-- https://drive.google.com/file/d/1m17aONx-F_cUQ1B_ZaK4mv-jrCAr1iXz/view?usp=sharing -->
+
+<div class="w-full cursor-pointer active:scale-[93%] transition-all duration-150 group relative">
+  <div [routerLink]="['/product-details', product._id]">
+    <img [src]="product.imageCover" [alt]="product.title" />
+    <span class="text-green-500 text-sm">{{ product.category.name }}</span>
+    <h2 class="text-lg capitalize mb-2 truncate" [title]="product.title">
+      {{ product.title }}
+    </h2>
+
+    <div class="flex justify-between items-center">
+      <span>{{ product.price }} EGP</span>
+      <span class="text-black/75">
+        <i class="fa-solid fa-star" style="color: #ffd43b"></i>
+        {{ product.ratingsAverage }}
+      </span>
+    </div>
+  </div>
+
+  <button
+    (click)="addProductCart(product._id)"
+    class="w-full bg-green-500 py-1.5 rounded text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-8 active:scale-[83%] group-hover:translate-0 cursor-pointer"
+  >
+    Add to Cart
+  </button>
+
+  <button
+    (click)="toggleWishlist(product)"
+    class="absolute top-2 right-2 text-gray-400 hover:text-red-500 cursor-pointer"
+  >
+    <i
+      [class]="wishlistIds.includes(product._id) ? 'fa-solid fa-heart text-red-500 fa-xl' : 'fa-regular fa-heart fa-xl'"
+    ></i>
+  </button>
+</div>

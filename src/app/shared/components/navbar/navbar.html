@@ -1,0 +1,91 @@
+<nav class="bg-gray-100 border-gray-200 dark:bg-gray-900">
+  <div class="max-w-screen-xl gap-2 flex flex-wrap items-center justify-between mx-auto p-4">
+    <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img
+        src="/images/logo-removebg-preview.png"
+        alt="fresh cart logo"
+        width="120px"
+        height="120px"
+      />
+    </a>
+    <button
+      data-collapse-toggle="navbar-default"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg desktop:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-5 h-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"
+        />
+      </svg>
+    </button>
+    <div class="grow hidden w-full desktop:flex justify-between desktop:w-auto" id="navbar-default">
+      <ul
+        class="font-medium flex flex-col mt-4 border border-gray-100 rounded-lg desktop:flex-row desktop:space-x-8 rtl:space-x-reverse desktop:mt-0 desktop:border-0 dark:bg-gray-800 desktop:dark:bg-gray-900 dark:border-gray-700"
+      >
+        @for (page of pages; track $index) {
+          @if (isLogin) {
+            <li>
+              <a
+                routerLinkActive="text-green-500"
+                [routerLink]="page.path"
+                class="block py-2 px-3 text-gray-600 hover:bg-gray-100 rounded-sm desktop:hover:bg-transparent desktop:p-0 dark:text-white desktop:dark:text-green-500"
+                aria-current="page"
+                >{{ page.title }}</a
+              >
+            </li>
+          }
+        }
+      </ul>
+
+      <ul
+        class="ml-auto font-medium flex flex-col mt-4 border border-gray-100 rounded-lg desktop:flex-row desktop:space-x-8 rtl:space-x-reverse desktop:mt-0 desktop:border-0 dark:bg-gray-800 desktop:dark:bg-gray-900 dark:border-gray-700"
+      >
+        <!-- <li class="space-x-2.5 flex items-center">
+          <a href="https://facebook.com" target="_blank">
+            <i class="cursor-alias fa-brands fa-facebook"></i
+          ></a>
+          <a href="https://x.com" target="_blank">
+            <i class="cursor-alias fa-brands fa-x-twitter"></i
+          ></a>
+          <a href="https://instagram.com" target="_blank">
+            <i class="cursor-alias fa-brands fa-instagram"></i
+          ></a>
+        </li> -->
+
+        @for (page of authPages; track $index) {
+          @if (!isLogin) {
+            <li>
+              <a
+                routerLinkActive="text-green-500"
+                [routerLink]="page.path"
+                class="block py-2 px-3 text-gray-900 hover:bg-gray-100 rounded-sm desktop:hover:bg-transparent desktop:p-0 dark:text-white desktop:dark:text-green-500"
+                aria-current="page"
+                >{{ page.title }}</a
+              >
+            </li>
+          }
+        }
+
+        @if (isLogin) {
+          <li>
+            <span class="cursor-pointer text-red-600 dark:text-red-400" (click)="logOut()">logOut</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

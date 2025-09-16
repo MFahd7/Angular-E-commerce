@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* 4 flowbite */
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+@theme {
+    --breakpoint-desktop: 1000px;
+    --color-main: var(--color-green-500);
+}
+
+:root {
+	--hue: 223;
+	--bg: hsl(var(--hue),10%,90%);
+	--fg: var(--color-main);
+	--primary: var(--color-main);
+	--trans-dur: 0.3s;
+}

@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+
+@if ((currentRoute !== '/register') && (currentRoute !== '/login') && (currentRoute !== '/reset-password')) {
+    <div class="max-w-screen-xl mx-auto p-4">
+        <router-outlet></router-outlet>
+    </div>
+} @else {
+    <router-outlet></router-outlet>
+}
+<app-footer></app-footer>
+
+<app-global-loader></app-global-loader>
