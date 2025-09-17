@@ -1,9 +1,16 @@
 {
   "version": 2,
   "builds": [
-    { "src": "dist/ecommerce/browser/**", "use": "@vercel/static" }
+    {
+      "src": "angular.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist/ecommerce" }
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "dist/ecommerce/browser/index.html" }
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
   ]
 }
