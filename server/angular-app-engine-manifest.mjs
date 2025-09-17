@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/Angular-E-commerce',
+  basePath: 'https://mfahd7.github.io/Angular-E-commerce',
   supportedLocales: {
   "en-US": ""
 },

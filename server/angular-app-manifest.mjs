@@ -2,7 +2,7 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
-  baseHref: '/Angular-E-commerce/',
+  baseHref: 'https://mfahd7.github.io/Angular-E-commerce/',
   locale: undefined,
   routes: [
   {
@@ -122,8 +122,8 @@ export default {
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 11468, hash: '6da62d6540b0b5df02dbaf9990b79ce1b6cbb892f8e4d4c4125157226a2b3762', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1388, hash: '2d6f2e00086761b3a2e0e896b48c24bc7056715311f47b3efeaf9dc377a500b5', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'index.csr.html': {size: 11492, hash: 'c4e86c934385c79b6318fe3a0f49cbb6b13a5998e7450cf3382cc8e2d17d7a67', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1412, hash: '3ddba1f80d140e632b51e73b62aa9d1a33f977770f3480f7098a45d688af6f7c', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
     'styles-QV5Y2Y7T.css': {size: 192107, hash: 'tOdIG681Yzk', text: () => import('./assets-chunks/styles-QV5Y2Y7T_css.mjs').then(m => m.default)}
   },
 };
