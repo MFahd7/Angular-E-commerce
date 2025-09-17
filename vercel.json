@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "dist/ecommerce/server/main.js", "use": "@vercel/node" },
+    { "src": "dist/ecommerce/browser/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "dist/ecommerce/server/main.js" }
+  ]
+}
