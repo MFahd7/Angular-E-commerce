@@ -75,7 +75,7 @@ export class AuthService {
     if ((decoded as any).id) {
       this.userData.next(true);
     }
-    // return decoded;
+
   }
 
   logout() {
@@ -91,7 +91,7 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  getCookieValue(cname: string, cookies:string) {
+  getCookieValue(cname: string, cookies: string) {
     let name = cname + '=';
     let ca = cookies.split(';')
     for (let i = 0; i < ca.length; i++) {
@@ -105,4 +105,18 @@ export class AuthService {
     }
     return '';
   }
+
+  getUserIdFromToken(): string | null {
+    const token = this.cookieService.get('token');
+    if (!token) return null;
+
+    try {
+      const decoded: any = jwtDecode(token);
+      return decoded.id;
+    } catch (error) {
+      console.error('Invalid token', error);
+      return null;
+    }
+  }
+  
 }

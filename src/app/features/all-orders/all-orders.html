@@ -29,7 +29,7 @@
               <strong>Total:</strong> {{ order.totalOrderPrice }} EGP
             </p>
             <p class="text-sm text-gray-500 dark:text-gray-300 mb-2">
-              <strong>Shipping:</strong> {{ order.shippingAddress?.city }} - {{ order.shippingAddress?.details }}
+              <strong>Shipping:</strong> {{ order.shippingAddress.city }} - {{ order.shippingAddress.details }}
             </p>
             <p class="text-sm text-gray-500 dark:text-gray-300 mb-4">
               <strong>Payment Method:</strong> {{ order.paymentMethodType }}

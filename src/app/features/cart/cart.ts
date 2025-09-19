@@ -1,10 +1,10 @@
 import { ToastrService } from 'ngx-toastr';
-import { CartResponse } from '../../core/interfaces/api.interface';
+import { CartResponse, ShippingAddress } from '../../core/interfaces/api.interface';
 import { CartService } from './../../core/services/cart.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { CartLoader } from '../../shared/components/cart-loader/cart-loader';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -21,6 +21,10 @@ export class Cart implements OnInit {
 
   private CartService = inject(CartService);
   private toastr = inject(ToastrService);
+  private router = inject(Router)
+  // for deciding payment method
+  paymentMethod: 'cash' | 'card' | null = null;
+
 
   addressForm = new FormGroup({
     details: new FormControl('', Validators.required),
@@ -105,6 +109,30 @@ export class Cart implements OnInit {
       },
     });
   }
+
+checkoutCash() {
+  if (!this.cartData?.cartId) return;
+
+  if (this.addressForm.invalid) {
+    this.addressForm.markAllAsTouched();
+    this.toastr.error('Please fill in all required fields.');
+    return;
+  }
+
+  this.CartService.checkoutCash(this.cartData.cartId, this.addressForm.value as ShippingAddress)
+    .subscribe({
+      next: (res) => {
+        // res is Response<Orders>
+        const order = res.data[0]; // ✅ always from your Response<T> interface
+
+        this.toastr.success('Order placed successfully');
+        this.router.navigate(['/allorders']);
+      },
+      error: (err) => {
+        this.toastr.error(err.message);
+      },
+    });
+}
 
   closeForm(){
     this.isFormOpen = false;

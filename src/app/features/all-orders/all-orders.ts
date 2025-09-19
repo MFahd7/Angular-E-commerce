@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
+import { AllordersService } from '../../core/services/allorders.service';
+import { Orders } from '../../core/interfaces/api.interface';
 
 @Component({
   selector: 'app-all-orders',
