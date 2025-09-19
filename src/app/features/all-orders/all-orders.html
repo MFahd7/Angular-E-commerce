@@ -11,7 +11,7 @@
     } @else {
       <div class="space-y-6">
         @for (order of orders.slice().reverse(); track order._id) {
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border-l-4 border-green-500 dark:border-emerald-500">
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 border-l-4 border-green-500 dark:border-emerald-500 w-4/5 mx-auto">
             <div class="flex justify-between items-center mb-4">
               <h3 class="text-lg font-bold text-gray-800 dark:text-white">Order {{order.user.name}}</h3>
               <span
