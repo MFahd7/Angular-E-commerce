@@ -13,7 +13,7 @@ export class AllordersService {
     return this.http.get(environment.BaseURL+'orders');
   }
   getUserOrders(userId: string): Observable<any> {
-  return this.http.get(`${environment.BaseURL}orders/user/${userId}`);
+  return this.http.get(`${environment.BaseURL}/orders/user/${userId}`);
 }
 
 }

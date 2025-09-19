@@ -56,6 +56,7 @@ export class App implements OnInit {
       }
     }
 
+    
 
     // for the page title in the tab bar
     this.router.events
@@ -73,4 +74,6 @@ export class App implements OnInit {
         this.titleService.setTitle(pageTitle);
       });
   }
+
+  
 }

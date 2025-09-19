@@ -19,18 +19,22 @@ export class AllOrders implements OnInit {
   ngOnInit(): void {
   this.getOrders();
   }
-  getOrders():void{
-      const userId = this.authService.getUserIdFromToken();
-    if (userId) {
-      this.ordersService.getUserOrders(userId).subscribe({
-        next: (res) => {
-          console.log(res);
-          
-          this.orders = res;
-        },
-        
-      });
-    }
+
+  
+getOrders(): void {
+  const userId = this.authService.getUserIdFromToken();
+
+  if (userId) {
+    this.ordersService.getUserOrders(userId).subscribe({
+      next: (res: Orders[]) => {
+        this.orders = res;  
+      },
+      error: (err) => {
+        console.error('Error fetching orders:', err);
+      }
+    });
   }
+}
+
 
 }
