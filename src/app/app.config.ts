@@ -13,6 +13,8 @@ import { provideToastr } from 'ngx-toastr';
 import { headerInterceptor } from './core/interceptors/header-interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { loaderInterceptor } from './core/interceptors/loader-interceptor';
+import {provideTranslateService, provideTranslateLoader} from "@ngx-translate/core";
+import {provideTranslateHttpLoader} from "@ngx-translate/http-loader";
 
 
 export const appConfig: ApplicationConfig = {
@@ -25,5 +27,13 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideToastr(),
     CookieService,
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: '/assets/i18n/',
+        suffix: '.json'
+      }),
+      fallbackLang: 'en',
+      lang: 'en'
+    }),
   ],
 };

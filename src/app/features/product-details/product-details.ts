@@ -6,10 +6,11 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from '../../core/services/wishlist.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CarouselModule],
+  imports: [CarouselModule, TranslatePipe],
   templateUrl: './product-details.html',
   styleUrl: './product-details.css',
 })

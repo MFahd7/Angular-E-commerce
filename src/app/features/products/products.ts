@@ -5,13 +5,14 @@ import { Product } from '../../core/interfaces/api.interface';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [ProductCard, FormsModule, CommonModule],
+  imports: [ProductCard, FormsModule, CommonModule, TranslatePipe],
   templateUrl: './products.html',
   styleUrl: './products.css',
 })

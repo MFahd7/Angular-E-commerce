@@ -5,10 +5,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CartLoader } from '../../shared/components/cart-loader/cart-loader';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
-  imports: [CartLoader, ReactiveFormsModule, RouterLink],
+  imports: [CartLoader, ReactiveFormsModule, RouterLink, TranslatePipe],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })

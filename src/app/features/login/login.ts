@@ -5,11 +5,12 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService, UserDataLogin } from '../../core/services/auth.service';
 import { RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

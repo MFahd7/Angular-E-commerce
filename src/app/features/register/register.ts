@@ -9,11 +9,12 @@ import {
 import { AuthService, UserData } from '../../core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })

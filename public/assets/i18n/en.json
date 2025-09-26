@@ -1,0 +1,107 @@
+{
+    "common": {
+        "AR": "عربي",
+        "EN": "English"
+    },
+    "navbar": {
+        "Brands": "Brands",
+        "Categories": "Categories",
+        "Products": "Products",
+        "Cart": "Cart",
+        "Wishlist": "Wishlist",
+        "Login": "Login",
+        "Register": "Register",
+        "Logout": "Log out"
+    },
+    "cart": {
+        "Empty": "Your Cart is Empty",
+        "title": "Shop Cart",
+        "subtitle": "Total cart price:",
+        "Price": "Price:",
+        "Total": "Total",
+        "Remove": "Remove",
+        "CheckoutCash": "Checkout via Cash",
+        "CheckoutCredit": "Checkout via Card",
+        "Clear": "Clear",
+        "Address": "Address from",
+        "Details": "District, Street, Building, Apartment",
+        "Phone": "Phone No.",
+        "City": "City",
+        "Submit": "Submit"
+    },
+    "wishlist": {
+        "Empty": "Your Wishlist is Empty",
+        "title": "Wishlist",
+        "subtitle": "Total wishlist price:",
+        "Price": "Price:",
+        "add": "Add to Cart",
+        "Remove": "Remove",
+        "Clear": "Clear"
+    },
+    "products": {
+        "search": "Search by title",
+        "notFound": "No products found",
+        "add": "Add to Cart"
+    },
+    "categories": {
+        "All": "All Categories",
+        "Close": "Close"
+    },
+    "brands": {
+        "All": "All Brands",
+        "Close": "Close"
+    },
+    "login&register": {
+        "title": "Login Now",
+        "subtitle": "Please enter your email and password to access your account.",
+        "email": "Email",
+        "emailError": "Email is required",
+        "emailError2": "Invalid email format (example@email.com)",
+        "password": "Password",
+        "passwordError": "Password is required",
+        "passwordError2": "Password must be at least 6 characters",
+        "passwordError3": "Password must start with a capital letter first and have 5-11 letters or numbers",
+        "forgot": "Forgot Password?",
+        "Login": "Login",
+        "name": "Name",
+        "rePassword": "Confirm Password",
+        "phone": "Phone",
+        "title2": "Register Now",
+        "subtitle2": "Please fill in the form to create an account.",
+        "Register": "Submit",
+        "process": "Processing...",
+        "isReq": "is required",
+        "isReq2": "must be at least 3 characters",
+        "isReq3": "must be maximum 20 characters",
+        "isReq4": "must be in email format (example@email.com)",
+        "isReq5": "must start with a capital letter and have 5-11 letters/numbers",
+        "isReq6": "Phone must start with 010, 011, 012, or 015 and be 11 digits",
+        "isReq7": "Passwords do not match"
+    },
+    "forgetForm": {
+        "title": "Forget Password",
+        "subtitle": "Please fill in your email to send you the code.",
+        "email": "Email address",
+        "emailError": "Email is required",
+        "emailError2": "Invalid email format (example@email.com)",
+        "send": "Send",
+        "process": "Sending...",
+        "title2": "Verify Code",
+        "subtitle2": "Please enter the code sent to your email.",
+        "code": "Enter code",
+        "codeError": "Code is required",
+        "codeError2": "Code must be at least 6 numbers",
+        "title3": "Set Password",
+        "subtitle3": "Please enter your new password.",
+        "newPass": "New password",
+        "newPassError": "Password is required",
+        "newPassError2": "Password must start with a capital letter first and have 5-11 letters or numbers"
+    },
+    "footer": {
+        "title": "Get The FreshCart Newsletter",
+        "subtitle": "We will send you our news, check your email daily.",
+        "send": "Send",
+        "payment": "Payment Partners",
+        "copyright": "© 2025 FreshCart Angular e-Commerce. All rights reserved. Developed by"
+    }
+}

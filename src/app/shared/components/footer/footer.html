@@ -3,9 +3,9 @@
     <!-- Top Section -->
     <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b pb-6">
       <div>
-        <h3 class="text-xl font-medium">Get The FreshCart Newsletter</h3>
+        <h3 class="text-xl font-medium">{{"footer.title" |translate}}</h3>
         <p class="text-gray-500 text-sm">
-          We will send you our news, check your email daily.
+          {{"footer.subtitle" |translate}}
         </p>
       </div>
 
@@ -13,14 +13,14 @@
       <div class="flex w-full md:w-auto">
         <input
           type="email"
-          placeholder="Email .."
+          placeholder="Example@email.com"
           class="px-4 py-2 rounded-l-md border border-gray-300 w-full md:w-72 focus:outline-none"
           disabled
         />
         <button
           class="bg-green-600 text-white px-4 py-2 rounded-r-md hover:bg-green-700 transition"
         >
-          Send
+          {{"footer.send" |translate}}
         </button>
       </div>
     </div>
@@ -29,7 +29,7 @@
     <div class="flex flex-col md:flex-row justify-between items-center py-6 gap-6">
       <!-- Payment Partners -->
       <div class="flex items-center gap-3 flex-wrap">
-        <span class="font-medium text-gray-700">Payment Partners</span>
+        <span class="font-medium text-gray-700">{{"footer.payment" |translate}}</span>
         <img src="/images/Stripe_Logo,_revised_2016.svg.png" class="h-6" alt="stripe logo"/>
         <img src="/images/Visa_2021.svg.png" class="h-6" alt="visa logo" />
         <img src="/images/Mastercard-logo.png" class="h-6" alt="mastercard logo" />
@@ -58,7 +58,7 @@
     <!-- Bottom Section -->
     <div class="flex flex-col md:flex-row justify-between items-center border-t pt-6 text-sm text-gray-500 gap-4">
       <p>
-        © 2025 FreshCart Angular e-Commerce. All rights reserved. Developed by
+        {{"footer.copyright" |translate}}
         <a href="https://github.com/mfahd7" class="text-green-600 font-medium">MoFahd</a>
       </p>
 

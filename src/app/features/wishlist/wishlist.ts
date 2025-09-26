@@ -7,11 +7,12 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { GlobalLoader } from "../../shared/components/global-loader/global-loader";
 import { CartLoader } from "../../shared/components/cart-loader/cart-loader";
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.html',
-  imports: [CartLoader],
+  imports: [CartLoader, TranslatePipe],
 })
 export class WishlistComponent implements OnInit {
   wishlist: Product[] = [];

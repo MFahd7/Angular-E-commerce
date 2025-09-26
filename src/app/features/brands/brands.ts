@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { BrandService } from '../../core/services/brand.service';
 import { Brand } from '../../core/interfaces/api.interface';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-brands',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './brands.html',
   styleUrl: './brands.css',
 })
